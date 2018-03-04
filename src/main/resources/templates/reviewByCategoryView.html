@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en"></head>
+<body>
+<div th:each="review : ${reviewByCategoryModel}">
+    <a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a>
+</div> 
+</body>
+</html>

@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en"></head>
+<body>
+<div th:each="review: ${reviewModel}"> 
+    <p th:text="${review.content}"></p>
+</div> 
+</body>
+</html>

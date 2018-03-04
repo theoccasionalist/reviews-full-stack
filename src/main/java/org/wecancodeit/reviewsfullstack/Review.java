@@ -20,15 +20,15 @@ public class Review {
 	private Review() {
 	}
 
-	private String what;
+	private String name;
+
+	private String image;
 
 	@Lob
 	private String content;
 
-	private String image;
-
-	public Review(String what, Category category, String image, String content) {
-		this.what = what;
+	public Review(String name, Category category, String image, String content) {
+		this.name = name;
 		this.category = category;
 		this.image = image;
 		this.content = content;
@@ -38,15 +38,19 @@ public class Review {
 		return id;
 	}
 
-	public String getWhat() {
-		return what;
+	public String getName() {
+		return name;
 	}
 
 	public Category getCategory() {
 		return category;
 	}
 
-	public String content() {
+	public String getImage() {
+		return image;
+	}
+
+	public String getContent() {
 		return content;
 	}
 

@@ -18,9 +18,14 @@ public class CategoryPopulator implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		Category cats = new Category("Cats");
+		Category fish = new Category("Fish");
 		cats = categoryRepo.save(cats);
-		Review phil = new Review("Phil", cats, "Image", "Phil Cat");
-		phil = reviewRepo.save(phil);
+		fish = categoryRepo.save(fish);
+
+		reviewRepo.save(new Review("Phil", cats, "Images", "Phil Cat"));
+		reviewRepo.save(new Review("Fusa", cats, "Images", "Fusa Cat"));
+		reviewRepo.save(new Review("AquaMan", fish, "Images", "Fish Man"));
+		reviewRepo.save(new Review("AquaLad", fish, "Images", "Fish Lad"));
 	}
 
 }

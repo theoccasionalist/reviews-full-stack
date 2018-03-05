@@ -22,23 +22,11 @@ public class RFSController {
 		return "categoriesView";
 	}
 
-	// @RequestMapping(value = "reviews")
-	// public String getAReview(Model model) {
-	// model.addAttribute("reviews", reviewRepo.findAll());
-	// return "reviews";
-	// }
-
 	@RequestMapping(value = "reviewbycategory")
-	public String getACategory(@RequestParam Long id, Model model) {
+	public String getAReviewFromACategory(@RequestParam Long id, Model model) {
 		model.addAttribute("reviewByCategoryModel", reviewRepo.findAllByCategory(categoryRepo.findOne(id)));
 		return "reviewByCategoryView";
 	}
-
-	// @RequestMapping(value = "category")
-	// public String getListofCategories(@RequestParam Long id, Model model) {
-	// model.addAttribute("singleCategoryModel", categoryRepo.findOne(id));
-	// return "singleCategoryView";
-	// }
 
 	@RequestMapping(value = "review")
 	public String getSingleReview(@RequestParam Long id, Model model) {

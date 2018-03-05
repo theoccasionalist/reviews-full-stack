@@ -13,7 +13,7 @@ public class Category {
 	@Id
 	@GeneratedValue
 	private long id;
-	private String name;
+	private String nameImg;
 
 	@OneToMany(mappedBy = "category")
 	private Collection<Review> reviews;
@@ -22,8 +22,8 @@ public class Category {
 	private Category() {
 	}
 
-	public Category(String name) {
-		this.name = name;
+	public Category(String nameImg) {
+		this.nameImg = nameImg;
 	}
 
 	public Collection<Review> getReviews() {
@@ -34,8 +34,8 @@ public class Category {
 		return id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNameImg() {
+		return nameImg;
 	}
 
 	@Override

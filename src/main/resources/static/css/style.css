@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+@import url('https://fonts.googleapis.com/css?family=Frijole');
+
+a {
+	decoration: none;
+	color:red;
+}
+
+a:hover {
+	color: green;
+}
+
+h1 {
+	font-family: monoton;
+}
+
+h2 {
+	font-family: 'Frijole', cursive;	
+}
+
+
+.body {
+	background-color:blue;
+}
+
+.main {
+	background-color: lightgreen;
+}
+
+.body2 {
+	background-color: lightgreen;
+}
+
+.main2 {
+	background-color: purple;
+}
+
+.body3 {
+	background-color: purple;
+}
+
+.main3 {
+	background-color: khaki;
+}
+
+footer {
+	text-align: center;
+}

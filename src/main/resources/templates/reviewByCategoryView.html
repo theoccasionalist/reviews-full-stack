@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="en"></head>
-<body>
-<div th:each="review : ${reviewByCategoryModel}">
-    <a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a>
-</div> 
+<head lang="en">
+	<meta charset="UTF-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>
+
+	<link rel="stylesheet" href="/css/style.css"></link>
+	<link rel="stylesheet" href="/css/layout.css"></link>	
+</head>
+<body class="body2">
+<article class="main2">
+	<header>
+		<h1>Review Selections</h1>
+	</header>
+	<section th:each="review : ${reviewByCategoryModel}">
+    <a th:href="@{/review(id=${review.id})}"><img th:src="${review.name}" id="pic2"/></a>
+    </section>
+</article>
 </body>
+<footer><a href="http://localhost:8080/categories">Go Back</a></footer>
 </html>

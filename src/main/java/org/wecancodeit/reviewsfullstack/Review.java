@@ -20,14 +20,14 @@ public class Review {
 	private Review() {
 	}
 
+	private String header;
 	private String name;
-
 	private String image;
-
 	@Lob
 	private String content;
 
-	public Review(String name, Category category, String image, String content) {
+	public Review(String header, String name, Category category, String image, String content) {
+		this.header = header;
 		this.name = name;
 		this.category = category;
 		this.image = image;
@@ -36,6 +36,10 @@ public class Review {
 
 	public long getId() {
 		return id;
+	}
+
+	public String getHeader() {
+		return header;
 	}
 
 	public String getName() {

@@ -1,6 +1,8 @@
 package org.wecancodeit.reviewsfullstack;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,18 +15,13 @@ public class Tag {
 	@Id
 	@GeneratedValue
 	private long id;
+	private String description;
 
 	@ManyToMany(mappedBy = "tags")
 	private Collection<Review> reviews;
 
-	@SuppressWarnings("unused")
-	private Tag() {
-	}
-
-	private String description;
-
-	public Tag(String description) {
-		this.description = description;
+	public Collection<Review> getReviews() {
+		return reviews;
 	}
 
 	public long getId() {
@@ -35,8 +32,13 @@ public class Tag {
 		return description;
 	}
 
-	public Collection<Review> getReviews() {
-		return reviews;
+	public Tag(String description, Review... reviews) {
+		this.description = description;
+		this.reviews = new HashSet<>(Arrays.asList(reviews));
+	}
+
+	@SuppressWarnings("unused")
+	private Tag() {
 	}
 
 	@Override

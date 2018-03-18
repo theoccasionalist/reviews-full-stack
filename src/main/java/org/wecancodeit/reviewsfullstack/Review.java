@@ -80,6 +80,26 @@ public class Review {
 		return comments;
 	}
 
+	public Boolean tagExists(long tagId) {
+		boolean tagExists = false;
+		for (Tag tag : tags) {
+			if (tag.getId() == tagId) {
+				tagExists = true;
+				break;
+			}
+		}
+		return tagExists;
+	}
+
+	public void addTag(Tag tag) {
+		tags.add(tag);
+	}
+
+	// @Override
+	// public String toString() {
+	// return "Tag [type=" + tags + "]";
+	// }
+
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();

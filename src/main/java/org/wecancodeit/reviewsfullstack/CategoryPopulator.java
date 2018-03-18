@@ -33,12 +33,9 @@ public class CategoryPopulator implements CommandLineRunner {
 		tag2 = tagRepo.save(tag2);
 
 		reviewRepo.save(new Review("The Ultimate Warrior", "/images/ultimatewarrior.png", tvPeople,
-				"/images/ultimatewarrior2.jpg",
-				"Born of ashes and smoke, the Ultimate Warrior is the recurring bringer of doom. Endlessly reborn, the Ultimate Warrior brings rampant destruction, ever-flowing tears, and the darkest of nights. Only one thing on this planet can stop the Ultimate Warrior's cycle of pain, and that thing is: Xena, the Warrior Princess.",
-				tag));
+				"/images/ultimatewarrior2.jpg", "Mean Machine", tag));
 		reviewRepo.save(new Review("Xena: Warrior Princess", "/images/xena.png", tvPeople, "/images/xena2.jpg",
-				"Xena is not just any warrior princess.  She is THE warrior princess.  Willingly taking human form, she combats the forces of evil, tyranny, and undue taxation.  Despite her superhuman agility and strength, Xena's fight for prosperity and freedom is a neverending struggle.  Not only do the follies of humankind constantly stand in her way, but her arch-nemesis--the Ultimate Warriot--is forever reborn, bringing ever-new misery to the the planet.",
-				tag2));
+				"Warrior Princess", tag2));
 		reviewRepo.save(new Review("Ron Swanson", "/images/ronswanson.png", tvPeople, "/images/ronandxena.jpg",
 				"Ron Swanson wrote his will at the age of eight.  It reads: \"Upon my death, all of my belongings shall transfer to the man or animal who has killed me.\"  It is thus only natural that Ron Swanson and Xena, the Warrior Princess, developed a deep romance and chose to cement their love in the bond of marriage.  Perhaps, with their powers combined, the Utlimate Warrior's long reign of terror may come to a close.",
 				tag));

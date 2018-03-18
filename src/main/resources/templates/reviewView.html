@@ -20,10 +20,41 @@
 				<img th:src="${review.image}" id="pic3"></img>
 			</figure>
 			<p th:text="${review.content}"></p>
-			<div th:each="tag: ${reviewTagModel}">
-				<a th:text="${tag.description}" href="http://localhost:8080/tags"></a>
-			</div>
+<!-- 			<div th:each="tag: ${reviewModel.tags}"> -->
+<!-- 				<a th:text="${tag.description}" href="http://localhost:8080/tags"></a> -->
+<!-- 			</div> -->
 		</section>
+		
+		<div id="tagList">
+			<ul id="tagList" th:each="tag:${reviewModel.getTags()}">
+				<li th:text="${tag.description}"></li>
+			</ul>
+		</div>
+		
+		<div class="newTagForm">
+			<form id="newTagForm" method="post">
+				<label>New Tag:</label>
+				<input id="reviewTagId" type="hidden" th:value="${reviewModel.id}" name="reviewId"></input>
+				<input id="descriptionId" type="text" name="description"></input>
+				<button id="addTag" th:formaction="@{/add-tag}">Submit</button>
+			</form>
+		</div>
+		
+<!-- 		<section th:each="tag: ${reviewModel.tags}"> -->
+<!-- 			<p th:text="${tag.description}"></p> -->
+<!-- 		</section> -->
+		
+<!-- 		<section> -->
+<!-- 			<form method="post"> -->
+<!-- 				<label>Tag:</label> -->
+<!-- 				<input type="text" name="description"></input> -->
+<!-- 				<div class="add-comment-reviewId"> -->
+<!-- 				<input type="hidden" th:value="${reviewModel.id}" name="stringId"/> -->
+	
+<!-- 			 	</div> -->
+<!-- 				<button type="submit" th:formaction="@{/add-tag}">Tag Submit</button> -->
+<!-- 			</form> -->
+<!-- 		</section> -->
 		
 		<section th:each="comment: ${reviewModel.comments}">
 			<p th:text="${comment.content}"></p>
@@ -31,38 +62,20 @@
 		
 		<section>
 			<form method="post">
-				<label>Content:</label>
+				<label>Comment</label>
 				<input type="text" name="content"></input>
 				<div class="add-comment-reviewId">
 				<input type="hidden" th:value="${reviewModel.id}" name="stringId"/>
-				<!--  	<input class="add-comment-reviewId" type="text" th:field="*{selectedReview.id}" name="inputId"> 
-			 -->	
+	
 			 	</div>
-				<button type="submit" th:formaction="@{/add-comment}">Push</button>
+				<button type="submit" th:formaction="@{/add-comment}">Comment Submit</button>
 			</form>
-		
 		</section>
-<!-- 		<div> -->
-<!-- 		<form method="POST"> -->
-<!-- 			<div> -->
-<!-- 				<label>Leave comment: </label> <input type="text" name="commentText" /> -->
-<!-- 			</div> -->
-<!-- 			<div> -->
-<!-- 				<input name="reviewId"  th:value="${reviewId}" /> -->
-<!-- 			</div> -->
-<!-- 			<div> -->
-<!-- 				<button type="submit" th:formaction="@{/add-comment}">Enter</button> -->
-<!-- 			</div> -->
-<!-- 			<ul th:each="comment: ${reviewCommentModel}"> -->
-<!-- 			<li -->
-<!-- 				th:text="'Comment: ' + ${comment.content}"> -->
-<!-- 			</li> -->
-<!-- 		</ul> -->
-<!-- 		</form> -->
-<!-- 		</div> -->
+
 	</article>
 </body>
 <footer>
 	<a href="http://localhost:8080/categories">Return Home</a>
 </footer>
+<script src="./js/ajaxTags.js"></script>
 </html>

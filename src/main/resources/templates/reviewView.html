@@ -20,14 +20,11 @@
 				<img th:src="${review.image}" id="pic3"></img>
 			</figure>
 			<p th:text="${review.content}"></p>
-<!-- 			<div th:each="tag: ${reviewModel.tags}"> -->
-<!-- 				<a th:text="${tag.description}" href="http://localhost:8080/tags"></a> -->
-<!-- 			</div> -->
 		</section>
 		
 		<div id="tagList">
 			<ul id="tagList" th:each="tag:${reviewModel.getTags()}">
-				<li th:text="${tag.description}"></li>
+				<li><a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a></li>
 			</ul>
 		</div>
 		

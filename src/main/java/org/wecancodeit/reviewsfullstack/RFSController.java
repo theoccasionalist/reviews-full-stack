@@ -73,15 +73,16 @@ public class RFSController {
 		return "addTagView";
 	}
 
-	// @RequestMapping("/add-tag")
-	// public String addATag(String stringId, String description) {
-	// Long id = Long.parseLong(stringId);
-	// Review review = reviewRepo.findOne(id);
-	// Tag tag = new Tag(description, review);
-	// tag = tagRepo.save(tag);
-	// return "redirect:/review?id=" + stringId;
-	// }
-	//
+	@RequestMapping("tag")
+	public String getATag(@RequestParam Long id, Model model) {
+		Tag tag = tagRepo.findOne(id);
+		// model.addAttribute("tag", tagRepo.findOne(id));
+		model.addAttribute("tagModel", tag);
+		model.addAttribute("reviewModel", reviewRepo.findOne(id));
+		model.addAttribute("reviewsByTagsModel", reviewRepo.findByTagsContains(tag));
+		return "tagsView";
+	}
+
 	// @RequestMapping(value = "/tags")
 	// public String getAllTags(Model model) {
 	// model.addAttribute("tagsModel", tagRepo.findAll());

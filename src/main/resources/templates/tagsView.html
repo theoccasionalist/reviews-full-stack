@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
-<meta charset="UTF-8"></meta>
+	<meta charset="UTF-8"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 	<meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>
 
 	<link rel="stylesheet" href="/css/style.css"></link>
-	<link rel="stylesheet" href="/css/layout.css"></link>	
+	<link rel="stylesheet" href="/css/layout.css"></link>
 </head>
 <body class="body3">
-<article class="main3">
-    <div th:each="tag: ${tagsModel}">
-    	<a th:text="${tag.description}"></a>
-    	<div th:each="review: ${reviewsModel}">
-    	<a th:text="${review.name}"></a>
-    	</div>
-    </div>
-</article> 
+	<header>
+		<h1 th:text="'Reviews with the' + ${tagModel.description} + 'tag'"></h1>
+		<section th:each="review: ${reviewsByTagsModel}">
+			<h2 th:text="${review.name}"></h2>
+		</section>
+	</header>
+	
 </body>
-<footer><a href="http://localhost:8080/categories">Return Home</a></footer>
 </html>

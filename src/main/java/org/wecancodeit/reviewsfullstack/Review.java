@@ -1,10 +1,17 @@
 package org.wecancodeit.reviewsfullstack;
 
+import static java.util.Arrays.asList;
+
+import java.util.Collection;
+import java.util.HashSet;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Review {
@@ -16,6 +23,12 @@ public class Review {
 	@ManyToOne
 	private Category category;
 
+	@ManyToMany
+	private Collection<Tag> tags;
+
+	@OneToMany(mappedBy = "review")
+	private Collection<Comment> comments;
+
 	@SuppressWarnings("unused")
 	private Review() {
 	}
@@ -26,15 +39,16 @@ public class Review {
 	@Lob
 	private String content;
 
-	public Review(String header, String name, Category category, String image, String content) {
+	public Review(String header, String name, Category category, String image, String content, Tag... tags) {
 		this.header = header;
 		this.name = name;
 		this.category = category;
 		this.image = image;
 		this.content = content;
+		this.tags = new HashSet<>(asList(tags));
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -56,6 +70,14 @@ public class Review {
 
 	public String getContent() {
 		return content;
+	}
+
+	public Collection<Tag> getTags() {
+		return tags;
+	}
+
+	public Collection<Comment> getComments() {
+		return comments;
 	}
 
 	@Override

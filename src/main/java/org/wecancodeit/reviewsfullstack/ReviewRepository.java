@@ -8,4 +8,8 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
 
 	Collection<Review> findAllByCategory(Category category);
 
+	Collection<Review> findAllByTags(Tag tag);
+
+	Collection<Review> findAllByComments(Comment comment);
+
 }

@@ -2,22 +2,67 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 <meta charset="UTF-8"></meta>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-	<meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+<meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>
 
-	<link rel="stylesheet" href="/css/style.css"></link>
-	<link rel="stylesheet" href="/css/layout.css"></link>	
+<link rel="stylesheet" href="/css/style.css"></link>
+<link rel="stylesheet" href="/css/layout.css"></link>
 </head>
 <body class="body3">
-<article class="main3">
-	<header th:each="review : ${reviewModel}">
-		<h2 th:text="${review.header}"></h2>
-	</header>
-	<section th:each="review: ${reviewModel}" class="section3">
-		<figure><img th:src="${review.image}" id="pic3"></img></figure>
-    	<p th:text="${review.content}"></p>
-    </section>
-</article> 
+
+	<article class="main3">
+		<header th:each="review : ${reviewModel}">
+			<h2 th:text="${review.header}"></h2>
+		</header>
+		
+		<section th:each="review: ${reviewModel}" class="section3">
+			<figure>
+				<img th:src="${review.image}" id="pic3"></img>
+			</figure>
+			<p th:text="${review.content}"></p>
+			<div th:each="tag: ${reviewTagModel}">
+				<a th:text="${tag.description}" href="http://localhost:8080/tags"></a>
+			</div>
+		</section>
+		
+		<section th:each="comment: ${reviewModel.comments}">
+			<p th:text="${comment.content}"></p>
+		</section>
+		
+		<section>
+			<form method="post">
+				<label>Content:</label>
+				<input type="text" name="content"></input>
+				<div class="add-comment-reviewId">
+				<input type="hidden" th:value="${reviewModel.id}" name="stringId"/>
+				<!--  	<input class="add-comment-reviewId" type="text" th:field="*{selectedReview.id}" name="inputId"> 
+			 -->	
+			 	</div>
+				<button type="submit" th:formaction="@{/add-comment}">Push</button>
+			</form>
+		
+		</section>
+<!-- 		<div> -->
+<!-- 		<form method="POST"> -->
+<!-- 			<div> -->
+<!-- 				<label>Leave comment: </label> <input type="text" name="commentText" /> -->
+<!-- 			</div> -->
+<!-- 			<div> -->
+<!-- 				<input name="reviewId"  th:value="${reviewId}" /> -->
+<!-- 			</div> -->
+<!-- 			<div> -->
+<!-- 				<button type="submit" th:formaction="@{/add-comment}">Enter</button> -->
+<!-- 			</div> -->
+<!-- 			<ul th:each="comment: ${reviewCommentModel}"> -->
+<!-- 			<li -->
+<!-- 				th:text="'Comment: ' + ${comment.content}"> -->
+<!-- 			</li> -->
+<!-- 		</ul> -->
+<!-- 		</form> -->
+<!-- 		</div> -->
+	</article>
 </body>
-<footer><a href="http://localhost:8080/categories">Return Home</a></footer>
+<footer>
+	<a href="http://localhost:8080/categories">Return Home</a>
+</footer>
 </html>

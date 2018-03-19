@@ -31,3 +31,17 @@ form.addEventListener('submit', function(event) {
 	xhr.send("reviewId=" + reviewTagId + "&description=" + descriptionId);
 	
 })
+
+const removeForm = document.getElementById('deleteTagForm');
+removeForm.addEventListener('submit', function(event) {
+	event.preventDefault();
+	const deleteTagId = document.getElementById('deleteTagId').value;
+	const deleteTagDescriptionId = document
+			.getElementById('deleteTagDescriptionId').value;
+
+	xhr.open('POST', 'http://localhost:8080/delete-tag', true);
+	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.send("reviewId=" + deleteTagId + "&description="
+			+ deleteTagDescriptionId);
+
+})

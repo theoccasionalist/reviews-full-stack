@@ -31,31 +31,24 @@
 		<div class="newTagForm">
 			<form id="newTagForm" method="post">
 				<label>New Tag:</label>
-				<input id="reviewTagId" type="hidden" th:value="${reviewModel.id}" name="reviewId"></input>
-				<input id="descriptionId" type="text" name="description"></input>
+				<input type="hidden" id="reviewTagId" th:value="${reviewModel.id}" name="reviewId"></input>
+				<input type="text" id="descriptionId" name="description"></input>
 				<button id="addTag" th:formaction="@{/add-tag}">Submit</button>
 			</form>
 		</div>
-		
-<!-- 		<section th:each="tag: ${reviewModel.tags}"> -->
-<!-- 			<p th:text="${tag.description}"></p> -->
-<!-- 		</section> -->
-		
-<!-- 		<section> -->
-<!-- 			<form method="post"> -->
-<!-- 				<label>Tag:</label> -->
-<!-- 				<input type="text" name="description"></input> -->
-<!-- 				<div class="add-comment-reviewId"> -->
-<!-- 				<input type="hidden" th:value="${reviewModel.id}" name="stringId"/> -->
-	
-<!-- 			 	</div> -->
-<!-- 				<button type="submit" th:formaction="@{/add-tag}">Tag Submit</button> -->
-<!-- 			</form> -->
-<!-- 		</section> -->
-		
+				
 		<section th:each="comment: ${reviewModel.comments}">
 			<p th:text="${comment.content}"></p>
 		</section>
+		
+		<div class="deleteTagForm">
+			<form id="deleteTagForm" method="post">
+				<label>Delete Tag</label>
+				<input type="hidden" id="deleteTagId" th:value="${reviewModel.id}" name="reviewId"></input>
+				<input type="text" id="deleteTagDescriptionId" name="deleteTagDescription"></input>
+				<button id="deleteTag" th:formaction="@{/delete-tag}">Delete Tag</button>
+			</form>
+		</div>
 		
 		<section>
 			<form method="post">

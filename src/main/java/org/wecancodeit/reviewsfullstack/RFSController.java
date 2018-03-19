@@ -1,5 +1,7 @@
 package org.wecancodeit.reviewsfullstack;
 
+import java.util.Iterator;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -70,6 +72,26 @@ public class RFSController {
 			model.addAttribute("review", nReview); // might need to be reviewModel
 		}
 
+		return "addTagView";
+	}
+
+	@RequestMapping("/delete-tag")
+	public String deleteTag(long reviewId, String description, Model model) {
+		Review nReview = reviewRepo.findOne(reviewId);
+		if (nReview != null && description != null) {
+			Tag toDelete = tagRepo.findByDescription(description);
+			if (toDelete != null) {
+				Iterator<Tag> tags = nReview.getTags().iterator();
+				while (tags.hasNext()) {
+					Tag cTag = tags.next();
+					if (cTag.getId() == toDelete.getId()) {
+						tags.remove();
+					}
+				}
+				reviewRepo.save(nReview); // two types of save
+			}
+			model.addAttribute("review", nReview);
+		}
 		return "addTagView";
 	}
 

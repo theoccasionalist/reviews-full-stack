@@ -1,5 +1,3 @@
 <ul th:each="tag: ${review.tags}">
-	<li th:text="${tag.description}" ></li>
+	<li><a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}" ></a></li>
 </ul>
-
-<!-- th:href="@{/tag(id=${tag.id})}" -->

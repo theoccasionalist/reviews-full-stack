@@ -1,3 +1,5 @@
+<section id="tagList2">
 <ul th:each="tag: ${review.tags}">
 	<li><a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}" ></a></li>
 </ul>
+</section>

@@ -22,8 +22,11 @@ h2 {
 
 .main3 {
 	display: grid;
+	grid-gap: 1px;
 	grid-template-columns: auto;
-	grid-template-rows: 7em 7em 15em;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	padding: 10px;
+	padding-bottom: 75px;
 }
 
 #pic{
@@ -39,4 +42,28 @@ h2 {
 #pic3 {
 	height: 10rem;
 	width: 10rem;
+}
+
+#comment-box {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto;
+	background-color: 	#C0C0C0;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#review-box {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto;
+	background-color: 	#C0C0C0;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#tagList, #tagList2 {
+	background-color: 	#C0C0C0;
+	border-radius: 5px;
+	padding: 5px;
 }

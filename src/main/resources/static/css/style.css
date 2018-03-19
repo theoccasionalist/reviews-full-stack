@@ -41,6 +41,12 @@ h2 {
 
 .main3 {
 	background-color: khaki;
+	padding-bottom: 15px;
+}
+
+ul, li {
+	display: inline;
+	decoration: none;
 }
 
 footer {

@@ -12,32 +12,34 @@ xhr.onreadystatechange = function() {
 	}
 }
 
-const form = document.getElementById('newTagForm');
+const addform = document.getElementById('addTagForm');
 
-form.addEventListener('submit', function(event) {
+addform.addEventListener('submit', function(event) {
 	event.preventDefault();
-	
-	const tagInputBox = document.getElementById('descriptionId').value;
-	if (tagInputBox == "") {
-		alert("Fill it out!");
-		return false;
+		
+	const addTagId = document.getElementById('addTagId').value;
+	const addTagDescriptionId = document.getElementById('addTagDescriptionId').value;
+	if (addTagDescriptionId == "") {
+	alert("Noting to add");
+	return false;
 	}
-	
-	const reviewTagId = document.getElementById('reviewTagId').value;
-	const descriptionId = document.getElementById('descriptionId').value;
 	
 	xhr.open("post", "http://localhost:8080/add-tag", true);
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhr.send("reviewId=" + reviewTagId + "&description=" + descriptionId);
+	xhr.send("reviewId=" + addTagId + "&description=" + addTagDescriptionId);
 	
 })
 
 const removeForm = document.getElementById('deleteTagForm');
 removeForm.addEventListener('submit', function(event) {
 	event.preventDefault();
+	
 	const deleteTagId = document.getElementById('deleteTagId').value;
-	const deleteTagDescriptionId = document
-			.getElementById('deleteTagDescriptionId').value;
+	const deleteTagDescriptionId = document.getElementById('deleteTagDescriptionId').value;
+	if (deleteTagDescriptionId == "") {
+		alert("Noting to delete");
+		return false;
+		}
 
 	xhr.open('POST', 'http://localhost:8080/delete-tag', true);
 	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -45,3 +47,5 @@ removeForm.addEventListener('submit', function(event) {
 			+ deleteTagDescriptionId);
 
 })
+
+//Many thanks to KC

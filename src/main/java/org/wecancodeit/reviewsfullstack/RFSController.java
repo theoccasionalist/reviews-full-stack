@@ -39,8 +39,6 @@ public class RFSController {
 	@RequestMapping("/review")
 	public String getSingleReview(@RequestParam Long id, Model model) {
 		model.addAttribute("reviewModel", reviewRepo.findOne(id));
-		// model.addAttribute("reviewTagModel",
-		// tagRepo.findAllByReviews(reviewRepo.findOne(id)));
 		return "reviewView";
 	}
 
@@ -53,7 +51,7 @@ public class RFSController {
 		return "redirect:/review?id=" + stringId;
 	}
 
-	@RequestMapping("/add-tag")
+	@RequestMapping("/add-tag") // Thanks KC
 	public String addTag(Long reviewId, String description, Model model) {
 		Review nReview = reviewRepo.findOne(reviewId);
 		if (nReview != null && description != null) {
@@ -62,20 +60,20 @@ public class RFSController {
 				Tag nTag = new Tag(description, nReview);
 				tagRepo.save(nTag);
 				nReview.addTag(nTag);
-				reviewRepo.save(nReview); // two types of save
+				reviewRepo.save(nReview);
 			} else {
 				if (nReview.tagExists(eTag.getId()) == false) {
 					nReview.addTag(eTag);
-					reviewRepo.save(nReview); // two types of save
+					reviewRepo.save(nReview);
 				}
 			}
-			model.addAttribute("review", nReview); // might need to be reviewModel
+			model.addAttribute("review", nReview);
 		}
 
 		return "addTagView";
 	}
 
-	@RequestMapping("/delete-tag")
+	@RequestMapping("/delete-tag") // KC is a genius.
 	public String deleteTag(long reviewId, String description, Model model) {
 		Review nReview = reviewRepo.findOne(reviewId);
 		if (nReview != null && description != null) {
@@ -88,7 +86,7 @@ public class RFSController {
 						tags.remove();
 					}
 				}
-				reviewRepo.save(nReview); // two types of save
+				reviewRepo.save(nReview);
 			}
 			model.addAttribute("review", nReview);
 		}
@@ -98,22 +96,9 @@ public class RFSController {
 	@RequestMapping("tag")
 	public String getATag(@RequestParam Long id, Model model) {
 		Tag tag = tagRepo.findOne(id);
-		// model.addAttribute("tag", tagRepo.findOne(id));
 		model.addAttribute("tagModel", tag);
 		model.addAttribute("reviewModel", reviewRepo.findOne(id));
 		model.addAttribute("reviewsByTagsModel", reviewRepo.findByTagsContains(tag));
 		return "tagsView";
 	}
-
-	// @RequestMapping(value = "/tags")
-	// public String getAllTags(Model model) {
-	// model.addAttribute("tagsModel", tagRepo.findAll());
-	// return "tagsView";
-	// }
-
-	// @RequestMapping("tag")
-	// public String getSingleTag(@RequestParam Long id, Model model) {
-	// return "tagView";
-	// }
-
 }

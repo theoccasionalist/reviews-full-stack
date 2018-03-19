@@ -12,7 +12,7 @@
 	<header>
 		<h1 th:text="'Reviews with the' + ${tagModel.description} + 'tag'"></h1>
 		<section th:each="review: ${reviewsByTagsModel}">
-			<h2><a th:href="@{/review(id=${review.id})}" th:text="${review.name}"></a></h2>
+			<h2><a th:href="@{/review(id=${review.id})}" th:text="${review.header}"></a></h2>
 		</section>
 	</header>
 	

@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="/css/layout.css"></link>
 </head>
 <body class="body3">
-
 	<article class="main3">
 		<header th:each="review : ${reviewModel}">
 			<h2 th:text="${review.header}"></h2>
@@ -19,46 +18,47 @@
 			<figure>
 				<img th:src="${review.image}" id="pic3"></img>
 			</figure>
-			<p th:text="${review.content}"></p>
+			<h4>The Review:</h4>
+			<p th:text="${review.content}" id="review-box"></p>
 		</section>
 		
-		<div id="tagList">
-			<ul id="tagList" th:each="tag:${reviewModel.getTags()}">
+		<h4>The tags: </h4>
+		<section id="tagList">
+			<ul th:each="tag:${reviewModel.getTags()}">
 				<li><a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a></li>
 			</ul>
-		</div>
-		
-		<div class="newTagForm">
-			<form id="newTagForm" method="post">
-				<label>New Tag:</label>
-				<input type="hidden" id="reviewTagId" th:value="${reviewModel.id}" name="reviewId"></input>
-				<input type="text" id="descriptionId" name="description"></input>
-				<button id="addTag" th:formaction="@{/add-tag}">Submit</button>
-			</form>
-		</div>
-				
-		<section th:each="comment: ${reviewModel.comments}">
-			<p th:text="${comment.content}"></p>
 		</section>
 		
-		<div class="deleteTagForm">
+		<section>
+			<form id="addTagForm" method="post">
+				<label>Add Tag:</label>
+				<input type="hidden" id="addTagId" th:value="${reviewModel.id}" name="reviewId"></input>
+				<input type="text" id="addTagDescriptionId" name="description"></input>
+				<button id="addTag" th:formaction="@{/add-tag}">Submit</button>
+			</form>
+		</section>
+				
+		
+		<section>
 			<form id="deleteTagForm" method="post">
-				<label>Delete Tag</label>
+				<label>Delete Tag:</label>
 				<input type="hidden" id="deleteTagId" th:value="${reviewModel.id}" name="reviewId"></input>
 				<input type="text" id="deleteTagDescriptionId" name="deleteTagDescription"></input>
-				<button id="deleteTag" th:formaction="@{/delete-tag}">Delete Tag</button>
+				<button id="deleteTag" th:formaction="@{/delete-tag}">Submit</button>
 			</form>
-		</div>
+		</section>
+		
+		<h4>The comments:</h4>
+		<section id="comment-box">
+			<p th:each="comment: ${reviewModel.comments}" th:text="${comment.content}"></p>
+		</section>
 		
 		<section>
 			<form method="post">
-				<label>Comment</label>
+				<label>Add Comment:</label>
 				<input type="text" name="content"></input>
-				<div class="add-comment-reviewId">
 				<input type="hidden" th:value="${reviewModel.id}" name="stringId"/>
-	
-			 	</div>
-				<button type="submit" th:formaction="@{/add-comment}">Comment Submit</button>
+				<button type="submit" th:formaction="@{/add-comment}">Submit</button>
 			</form>
 		</section>
 
@@ -67,5 +67,5 @@
 <footer>
 	<a href="http://localhost:8080/categories">Return Home</a>
 </footer>
-<script src="./js/ajaxTags.js"></script>
+<script src="./js/ajax.js"></script>
 </html>

@@ -1,5 +1,5 @@
 # Reviews Site (Final Iteration)
-## Mock reviews site (with user generated tabs and comments)
+## Mock reviews site with user generated tabs and comments
 ### Tech Specs:
 <ul>
   <li>Java fundamentals (classes, methods, collections, mappings, etc.)</li>
@@ -22,4 +22,4 @@
 
 ### Review page: 
 
-![reviews-full-stack-categories](https://user-images.githubusercontent.com/28411165/38471705-e9dd515c-3b42-11e8-831f-37e748a1a66c.jpg)
+![reviews-full-stack-review](https://user-images.githubusercontent.com/28411165/38471732-4f87516a-3b43-11e8-832b-b0d101b2d650.jpg)

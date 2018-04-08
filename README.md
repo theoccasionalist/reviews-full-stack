@@ -10,6 +10,7 @@
   <li>CSS3</li>
   <li>JavaScript</li>
   <li>Ajax requests</li>
+  <li>TDD with JUnit</li>
 </ul>
 
 ### Categories page: 

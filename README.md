@@ -5,6 +5,7 @@
   <li>Java fundamentals (classes, methods, collections, mappings, etc.)</li>
   <li>Spring MVC</li>
   <li>Spring data repositories</li>
+  <li>JPA database mapping</li>
   <li>Thymeleaf</li>
   <li>HTML5</li>
   <li>CSS3</li>
